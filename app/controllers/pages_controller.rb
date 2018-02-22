@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def draft
+    @posts = Post.all
   end
 end

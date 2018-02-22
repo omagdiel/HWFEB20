@@ -1,27 +1,22 @@
-<h1>Posts Index</h1>
-<%= link_to "New Post", new_post_path %>
+<% if user_signed_in? %>
 
+  <h1>Posts Index</h1>
+  <%= link_to "New Post", new_post_path %>
 
+  <% @posts.each do |post| %>
+    <p>
+      <%= link_to post.title, post_path(post) %>
+    </p>
+    <p>
+      <%= post.status %>
+    </p>
+    <p>
+      <%= "Created #{post.created_at}" %>
+    </p>
 
+    <hr>
+  <% end %>
 
-
-
-
-<% @posts.each do |post| %>
-  <p>
-    <%= link_to post.title, post_path(post) %>
-  </p>
-  <p>
-    <%= post.status %>
-  </p>
-
-    <% if post.user_id == current_user.id %>
-      <%= post.draft
-
-      <%
-  <p>
-    <%= "Created #{post.created_at}" %>
-  </p>
-
-  <hr>
-<% end %>
+<% else %>
+  <%root_path%>
+<%end%>
