@@ -1,6 +1,12 @@
 <h1>Posts Index</h1>
 <%= link_to "New Post", new_post_path %>
 
+
+
+
+
+
+
 <% @posts.each do |post| %>
   <p>
     <%= link_to post.title, post_path(post) %>
@@ -8,6 +14,11 @@
   <p>
     <%= post.status %>
   </p>
+
+    <% if post.user_id == current_user.id %>
+      <%= post.draft
+
+      <%
   <p>
     <%= "Created #{post.created_at}" %>
   </p>

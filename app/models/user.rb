@@ -15,5 +15,6 @@ class User < ApplicationRecord
 
   validates_presence_of :first_name, :last_name
 
-  has_many :posts
+  has_many :post_users
+  has_many :posts, through: :post_users
 end

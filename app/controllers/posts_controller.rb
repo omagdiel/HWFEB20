@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :toggle_status]
+    access all: [:show, :index], user: :all
 
   def index
     @posts = Post.all
@@ -14,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post.user << current_user
 
     if @post.save
       redirect_to @post, notice: 'Your post was created successfully'
@@ -39,12 +40,21 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: "Post was successfully deleted."
   end
 
+  def toggle_status
+    if @post.draft?
+      @post.published!
+    elsif @post.published?
+      @post.draft!
+    end
+    redirect_to posts_url, notice: 'Post status has been updated.'
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])
     end
 
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :status)
     end
 end
