@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-access all: :show, user: [:show], admin: :all
+access all: [:published, :show], user: [:published, :draft, :show], admin: :all
   def published
     @posts = Post.published
   end
