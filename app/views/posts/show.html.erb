@@ -1,6 +1,8 @@
 <h1><%= @post.title %></h1>
 <p>
   <%= @post.body %>
+
+  <%= image_tag @post.main_image, width: '100%' %>
 </p>
 <% if current_user.id == @post.user_id || logged_in?(:admin) %>
   <%= link_to "Edit", edit_post_path(@post) %>
