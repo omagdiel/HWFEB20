@@ -1,17 +1,10 @@
-<% if user_signed_in? %>
-  <h1>Pages#draft</h1>
+<h1>Pages#draft</h1>
 
-  <% @posts.each do |post| %>
-    <% if post.user_id == current_user %>
-      <p>
-        <%= link_to post.title, post_path(post) %>
-      </p>
-      <p>
-        <%= post.status %>
-      </p>
-    <% end %>
-  <% end %>
-
-<% else %>
-  <%pages_published_path%>
-<%end%>
+<% @posts.each do |post| %>
+  <p>
+    <%= link_to post.title, post_path(post) %>
+  </p>
+  <p>
+    <%= post.status %>
+  </p>
+<% end %>

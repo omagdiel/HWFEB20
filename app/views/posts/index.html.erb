@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if logged_in?(:admin) %>
 
   <h1>Posts Index</h1>
   <%= link_to "New Post", new_post_path %>
@@ -16,7 +16,6 @@
 
     <hr>
   <% end %>
-
 <% else %>
   <%root_path%>
 <%end%>
