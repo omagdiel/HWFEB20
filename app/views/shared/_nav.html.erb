@@ -1,1 +1,2 @@
-<%= login_helper %>
+<%= nav_helper 'nav-link', 'span' if logged_in?(:user) || logged_in?(:admin)%>
+<%= login_helper 'nav-link' %>
