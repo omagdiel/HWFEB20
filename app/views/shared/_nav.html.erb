@@ -1,2 +1,14 @@
-<%= nav_helper 'nav-link', 'span' if logged_in?(:user) || logged_in?(:admin)%>
-<%= login_helper 'nav-link' %>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <%= nav_helper 'active', 'li' if logged_in?(:user) || logged_in?(:admin)%>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+      <li>
+        <%= login_helper %>
+<%#*        <a href="#">Link</a>%>
+      </li>
+    </ul>
+  </div>
+</nav>

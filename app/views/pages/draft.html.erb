@@ -2,18 +2,16 @@
 
 <%= link_to "New Post", new_post_path %>
 
-<hr />
-
 <% @posts.each do |post| %>
-  <p>
-    <%= link_to post.title, post_path(post) %>
-  </p>
-  <p>
-    <%= post.status %>
-  </p>
-  <p>
-    <%= "Created #{post.created_at}" %>
-  </p>
-
-  <hr>
+  <div class="jumbotron">
+    <h2>
+      <%= link_to post.title, post_path(post) %>
+    </h2>
+    <p>
+      <%= post.status %>
+    </p>
+    <p>
+      <%= "Created #{post.created_at}" %>
+    </p>
+  </div>
 <% end %>
